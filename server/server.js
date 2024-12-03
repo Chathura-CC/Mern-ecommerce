@@ -3,7 +3,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
 const authRouter = require("./routes/auth/auth-routes");
-
+const adminProductsRouter = require("./routes/admin/products-routes");
 const connectDB = require("./config/db");
 
 const app = express();
@@ -29,6 +29,7 @@ app.use(express.json()); // Body parser for JSON requests
 // Connect to the database
 connectDB();
 app.use("/api/auth", authRouter);
+app.use("/api/admin/products", adminProductsRouter);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
